@@ -3,6 +3,7 @@ public class Book {
         private String title;
         private String author;
         private boolean isAvailable;
+        private Member borrowedBy;
 
         public Book(int id, String title, String author) {
             this.id = id;
@@ -29,5 +30,8 @@ public class Book {
 
         public void setAvailable(boolean available) {
             isAvailable = available;
+        }
+        public void setBorrowedBy(Member member) {
+            this.borrowedBy = member;
         }
     }

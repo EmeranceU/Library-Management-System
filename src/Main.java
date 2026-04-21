@@ -3,24 +3,28 @@ public class Main {
 
         Library library = new Library();
 
-        // Create books
-        Book book1 = new Book(1, "Java Basics", "John Doe");
-        Book book2 = new Book(2, "OOP Concepts", "Jane Smith");
+        Member m1 = new Member(1, "Alice");
+        library.addMember(m1);
 
-        // Add books
-        library.addBook(book1);
-        library.addBook(book2);
+        Book b1 = new Book(1, "Java Basics", "John Doe");
+        library.addBook(b1);
 
-        // Create member
-        Member member1 = new Member(1, "Alice");
+        Librarian l1 = new Librarian(2, "Bob");
 
-        // Add member
-        library.addMember(member1);
+        m1.displayInfo();
+        l1.displayInfo();
 
-        // Borrow book
-        library.borrowBook(1);
+        try {
+            library.borrowBook(1, m1);
+            library.borrowBook(1, m1);
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
 
-        // Return book
-        library.returnBook(1);
+        try {
+            library.returnBook(2);
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
