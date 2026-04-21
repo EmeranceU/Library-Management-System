@@ -37,6 +37,7 @@ public class Library {
         book.setBorrowedBy(member);
         System.out.println(member.getName() + " borrowed: " + book.getTitle());
     }
+
     public void borrowBook(int bookId) {
         Book book = findBook(bookId);
 
@@ -54,5 +55,12 @@ public class Library {
         book.setAvailable(true);
         book.setBorrowedBy(null);
         System.out.println("Book returned: " + book.getTitle());
+    }
+
+    public void displayBooks() {
+        for (Book book : books) {
+            System.out.println(book.getId() + " - " + book.getTitle() +
+                    " (" + (book.isAvailable() ? "Available" : "Borrowed") + ")");
+        }
     }
 }

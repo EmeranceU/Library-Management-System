@@ -9,10 +9,14 @@ public class Main {
         Book b1 = new Book(1, "Java Basics", "John Doe");
         library.addBook(b1);
 
-        Librarian l1 = new Librarian(2, "Bob");
+        Person[] people = {
+                new Member(1, "Alice"),
+                new Librarian(2, "Bob")
+        };
 
-        m1.displayInfo();
-        l1.displayInfo();
+        for (Person p : people) {
+            p.displayInfo();
+        }
 
         try {
             library.borrowBook(1, m1);
@@ -26,5 +30,7 @@ public class Main {
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
+
+        library.displayBooks();
     }
 }
