@@ -4,6 +4,7 @@ public class Librarian extends Person {
         super(id, name);
     }
 
+    @Override
     public void displayInfo() {
         System.out.println("Librarian: " + name);
     }
