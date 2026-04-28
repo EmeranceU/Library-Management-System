@@ -1,5 +1,3 @@
-package models;
-
 public abstract class Person {
     protected int id;
     protected String name;
@@ -13,7 +11,7 @@ public abstract class Person {
         return id;
     }
 
-    public String getName() {
+        public String getName() {
         return name;
     }
 
