@@ -1,0 +1,3 @@
+4,The Pragmatic Programmer,3,Aline,BORROW,2026-04-28 16:05:01
+4,The Pragmatic Programmer,3,Aline,RETURN,2026-04-28 16:05:26
+Aline,Backend Advanced,borrowed,2026-04-28 16:26:54
