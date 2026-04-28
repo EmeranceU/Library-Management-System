@@ -1,49 +1,26 @@
+import models.Book;
+import services.LibraryService;
+import services.MemberService;
+import storage.FileManager;
+import ui.LibraryMenu;
+
 public class Main {
     public static void main(String[] args) {
+        FileManager fileManager = new FileManager();
+        MemberService memberService = new MemberService(fileManager);
+        LibraryService libraryService = new LibraryService(memberService, fileManager);
 
-        Library library = new Library();
+        seedBooks(libraryService);
 
-        Member m1 = new Member(1, "Alice");
-        Member m2 = new Member(2, "Charlie");
-        Librarian l1 = new Librarian(3, "Bob");
+        new LibraryMenu(libraryService, memberService).start();
+    }
 
-        library.addMember(m1);
-        library.addMember(m2);
-
-        library.addBook(new Book(1, "Java Basics", "John Doe"));
-        library.addBook(new Book(2, "Clean Code", "Robert Martin"));
-        library.addBook(new Book(3, "Design Patterns", "Gang of Four"));
-
-        System.out.println("=== Library Management System ===");
-        System.out.println();
-
-        Person[] people = { m1, m2, l1 };
-        for (Person p : people) {
-            p.displayInfo();
-        }
-        System.out.println();
-
-        try {
-            library.borrowBook(1, 1);
-            library.borrowBook(2, 1);
-            library.borrowBook(3, 2);
-            library.borrowBook(1, 2);
-        } catch (BookNotAvailableException | BookNotFoundException | MemberNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        System.out.println();
-
-        try {
-            library.returnBook(1, 1);
-            library.borrowBook(1, 2);
-        } catch (BookNotAvailableException | BookNotFoundException | MemberNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        System.out.println();
-
-        System.out.println("--- Final State ---");
-        library.displayBooks();
-        System.out.println();
-        library.displayMembers();
+    private static void seedBooks(LibraryService libraryService) {
+        if (!libraryService.getAvailableBooks().isEmpty()) return;
+        libraryService.addBook(new Book(1, "Java Basics", "John Doe"));
+        libraryService.addBook(new Book(2, "Clean Code", "Robert Martin"));
+        libraryService.addBook(new Book(3, "Design Patterns", "Gang of Four"));
+        libraryService.addBook(new Book(4, "The Pragmatic Programmer", "Andrew Hunt"));
+        libraryService.addBook(new Book(5, "Effective Java", "Joshua Bloch"));
     }
 }

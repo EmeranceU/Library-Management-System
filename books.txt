@@ -1,0 +1,5 @@
+1,Java Basics,John Doe,true,-1
+2,Clean Code,Robert Martin,true,-1
+3,Design Patterns,Gang of Four,true,-1
+4,The Pragmatic Programmer,Andrew Hunt,true,-1
+5,Effective Java,Joshua Bloch,true,-1
